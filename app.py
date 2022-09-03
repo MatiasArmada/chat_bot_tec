@@ -233,7 +233,7 @@ provincia: {data[2]}
 latitud: {data[1]}
 longitud: {data[0]}
 temperatura: {data[4]}
-sensación termica: {data[5]}"""
+    sensación termica: {data[5]}"""
         )
     else:
         bot.sendMessage(
