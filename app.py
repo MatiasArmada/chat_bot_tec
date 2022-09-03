@@ -221,8 +221,8 @@ def datosCiudad(update, context):
     bot=context.bot
     chatId=update.message.chat_id
     args = context.args
-    print(args[0])
-    data=ciudad(args[0])
+    city=" ".join(args)
+    data=ciudad(city)
     
     if data[6] == True:
         bot.sendMessage(
