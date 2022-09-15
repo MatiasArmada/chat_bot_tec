@@ -1,7 +1,7 @@
 from bs4 import BeautifulSoup  #del módulo bs4, necesitamos BeautifulSoup
 import requests
 from requests import get
-import schedule
+#import schedule
 
 """
 def bot_send_text(bot_message):
