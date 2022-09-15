@@ -28,7 +28,7 @@ def query_teacher(update, context):
 <b>{userName}</b> consulta: {args}""")
 
 
-def request_teacher(context):
+def req_teacher(update,context):
     bot=context.bot
     args = context.args
     chatId=args.pop(0)
@@ -258,59 +258,3 @@ def del_event(update, context):
 #from Cripto import report
 #from informacionciudad import ciudad
 
-#Funciones descartadas
-
-"""
-def Chistes(update, context):
-    bot = context.bot
-    chatId=update.message.chat_id
-    userName = update.effective_user["first_name"]
-    logger.info(f"El usuario {userName} ha solicitado el link del meet")
-    chiste=get_joke(language="es", category="all")
-    bot.sendMessage(
-        chat_id=chatId,
-        parse_mode="HTML",
-        text=(f"{chiste}")
-    )
-
-
-
-#Funcion que envia el precio actual del bitcoin
-def Bit(update, context):
-    bot=context.bot
-    chatId=update.message.chat_id
-    format_result=report()
-    bot.sendMessage(
-        chat_id= chatId,
-        parse_mode="HTML",
-        text=f"{format_result}"
-    )
-
-
-#Funcion que envia datos de una ciudad
-def datosCiudad(update, context):
-    bot=context.bot
-    chatId=update.message.chat_id
-    args = context.args
-    city=" ".join(args)
-    data=ciudad(city)
-    
-    if data[6] == True:
-        bot.sendMessage(
-            chat_id= chatId,
-            parse_mode="HTML",
-            text=f"Pais: {data[3]}
-provincia: {data[2]}
-latitud: {data[1]}
-longitud: {data[0]}
-temperatura: {data[4]}
-sensación termica: {data[5]}"
-        )
-    else:
-        bot.sendMessage(
-            chat_id= chatId,
-            parse_mode="HTML",
-            text=f"{data}"
-            )
-
-"""
