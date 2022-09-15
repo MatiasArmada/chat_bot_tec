@@ -8,11 +8,14 @@ badWords=["baboso", "puta", "tonto", "pinche", "joto", "putita", "pito"]
 def start(update, context):
     bot=context.bot
     chatId= update.message.chat_id
-    userName= update.effective_user["first_name"]
-    bot.sendMessage(
-    chat_id= chatId,
-    parse_mode="HTML",
-    text=querys.msg_start.format(userName))
+    if -1001305930012 == chatId:
+        pass
+    else:
+        userName= update.effective_user["first_name"]
+        bot.sendMessage(
+        chat_id= chatId,
+        parse_mode="HTML",
+        text=querys.msg_start.format(userName))
 
 #Funcion para consultar al profesor directamente
 def query_teacher(update, context):
