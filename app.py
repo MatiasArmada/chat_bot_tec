@@ -5,7 +5,7 @@ import functions
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 
 
-TOKEN = os.getenv("TOKEN")
+TOKEN = "5673534665:AAEKqocVGaSTmkQQNj-hlDEuWa7iqD9Owt8"
 'os.getenv("TOKEN")' 
 
 

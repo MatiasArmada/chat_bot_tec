@@ -55,35 +55,44 @@ def msg_admin(context, text, userName):
 def getClasesInfo(update, context):
     bot = context.bot
     chatId=update.message.chat_id
-    userName = update.effective_user["first_name"]
-    logger.info(f"El usuario {userName} ha solicitado informacion sobre las clases")
-    bot.sendMessage(
-        chat_id=chatId,
-        parse_mode="HTML",
-        text=(querys.info_clases.format(userName))
-    )
+    if -1001305930012 == chatId:
+        pass
+    else:
+        userName = update.effective_user["first_name"]
+        logger.info(f"El usuario {userName} ha solicitado informacion sobre las clases {chatId}")
+        bot.sendMessage(
+            chat_id=chatId,
+            parse_mode="HTML",
+            text=(querys.info_clases.format(userName))
+        )
 
 def Python(update, context):
     bot = context.bot
     chatId=update.message.chat_id
-    userName = update.effective_user["first_name"]
-    logger.info(f"El usuario {userName} ha solicitado informacion sobre las clases")
-    bot.sendMessage(
-        chat_id=chatId,
-        parse_mode="HTML",
-        text=(querys.info_python.format(userName))
-    )
+    if -1001305930012 == chatId:
+        pass
+    else:
+        userName = update.effective_user["first_name"]
+        logger.info(f"El usuario {userName} ha solicitado informacion sobre las clases")
+        bot.sendMessage(
+            chat_id=chatId,
+            parse_mode="HTML",
+            text=(querys.info_python.format(userName))
+        )
 
 def getLinks(update, context):
     bot = context.bot
     chatId=update.message.chat_id
-    userName = update.effective_user["first_name"]
-    logger.info(f"El usuario {userName} ha solicitado el link del meet")
-    bot.sendMessage(
-        chat_id=chatId,
-        parse_mode="HTML",
-        text=(querys.links_clases)
-    )
+    if -1001305930012 == chatId:
+        pass
+    else:
+        userName = update.effective_user["first_name"]
+        logger.info(f"El usuario {userName} ha solicitado el link del meet")
+        bot.sendMessage(
+            chat_id=chatId,
+            parse_mode="HTML",
+            text=(querys.links_clases)
+        )
 
 
 def welcomeMessage(update, context):
@@ -153,19 +162,22 @@ def addEvent(update, context):
 
 def Event(update, context):
     chatId=update.message.chat_id
-    userName=update.effective_user["first_name"]
-    bot=context.bot
-    for evento in eventos:
-        if evento =="Eventos siguientes del cursado: \n":
-            text=evento
-        else:
-            text+=evento
-            
-    logger.info(f"El usuario {userName} ha solicitado los eventos")
-    bot.sendMessage(
-        chat_id=chatId,
-        text=text
-    )
+    if -1001305930012 == chatId:
+        pass
+    else:
+        userName=update.effective_user["first_name"]
+        bot=context.bot
+        for evento in eventos:
+            if evento =="Eventos siguientes del cursado: \n":
+                text=evento
+            else:
+                text+=evento
+                
+        logger.info(f"El usuario {userName} ha solicitado los eventos")
+        bot.sendMessage(
+            chat_id=chatId,
+            text=text
+        )
 
 #funcion que elimina el mensaje
 def deleteMsg(bot, chatId, messageId, userName):
@@ -184,7 +196,7 @@ def echo(update, context):
     userName= update.effective_user["first_name"]
     text=update.message.text #Obtener texto que envio el usuario
     logger.info(f"El usuario {userName} a enviado un nuevo mensaje en el grupo {chatId}")
-    msg_admin(context, text,userName)
+    #msg_admin(context, text,userName)
     for badWord in badWords:
         if badWord in text.lower():
             deleteMsg(bot, chatId, messageId, userName)
