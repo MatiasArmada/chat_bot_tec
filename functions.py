@@ -18,17 +18,18 @@ def start(update, context):
         text=querys.msg_start.format(userName))
 
 #Funcion para consultar al profesor directamente
-def query_teacher(update, context):
+def query_teacher(update, context,text):
     bot=context.bot
     chatId= update.message.chat_id
     userName= update.effective_user["first_name"]
-    args = context.args
-    args=" ".join(args)
+    #args = context.args
+    #args=" ".join(args)
+    args=text
     bot.sendMessage(
     chat_id= 1514482331,
     parse_mode="HTML",
     text=f"""chatID: {chatId} 
-<b>{userName}</b> consulta: {args}""")
+<b>{userName}</b> {args}""")
 
 
 def req_teacher(update,context):
@@ -208,7 +209,10 @@ def echo(update, context):
             parse_mode="HTML",
             text=f"El mensaje de <b>{userName}</b> fue eliminado por ser <b>inapropiado</b>")
             return
-    if "bot" in text.lower() and "hola" in text.lower():
+    if "consulta" in text.lower():
+        query_teacher(update, context,text)
+        return
+    elif "bot" in text.lower() and "hola" in text.lower():
         bot.sendMessage(
     chat_id= chatId,
     parse_mode="HTML",
