@@ -22,8 +22,6 @@ def query_teacher(update, context,text):
     bot=context.bot
     chatId= update.message.chat_id
     userName= update.effective_user["first_name"]
-    #args = context.args
-    #args=" ".join(args)
     args=text
     bot.sendMessage(
     chat_id= 1514482331,
@@ -56,7 +54,7 @@ def msg_admin(context, text, userName):
     text=f"<b>{userName}</b> dijo {text}")
 
 
-def getClasesInfo(update, context):
+def get_clases_info(update, context):
     bot = context.bot
     chatId=update.message.chat_id
     if -1001305930012 == chatId:
@@ -84,7 +82,7 @@ def Python(update, context):
             text=(querys.info_python.format(userName))
         )
 
-def getLinks(update, context):
+def get_links(update, context):
     bot = context.bot
     chatId=update.message.chat_id
     if -1001305930012 == chatId:
@@ -99,7 +97,7 @@ def getLinks(update, context):
         )
 
 
-def welcomeMessage(update, context):
+def welcome_message(update, context):
     bot=context.bot
     chatId=update.message.chat_id
     updateMsg=getattr(update, "message", None)
@@ -115,7 +113,7 @@ def welcomeMessage(update, context):
     )
 
 
-def userIsAdmin(chatId, userId, bot):
+def user_is_admin(chatId, userId, bot):
     try:
         groupAdmins = bot.get_chat_administrators(chatId)
         for admin in groupAdmins:
@@ -130,15 +128,15 @@ def userIsAdmin(chatId, userId, bot):
         print(e)
 
 
-def addEvent(update, context):
+def add_event(update, context):
     global eventos
     bot=context.bot
     chatId=update.message.chat_id
     userName = update.effective_user["first_name"]
     userId = update.effective_user["id"]
     args = context.args
-
-    if userIsAdmin(chatId, userId, bot):
+    
+    if user_is_admin(chatId, userId, bot):
         if len(args) == 0:
             logger.info(f"El usuaro {userName} no ha ingresado argumentos")
             bot.sendMessage(
@@ -164,7 +162,7 @@ def addEvent(update, context):
             )
 
 
-def Event(update, context):
+def event(update, context):
     chatId=update.message.chat_id
     if -1001305930012 == chatId:
         pass
@@ -184,7 +182,7 @@ def Event(update, context):
         )
 
 #funcion que elimina el mensaje
-def deleteMsg(bot, chatId, messageId, userName):
+def delete_msg(bot, chatId, messageId, userName):
     try:
         bot.delete_message(chatId, messageId)
         logger.info(f"El mensaje de {userName} se elimino por ser inapropiado")
@@ -203,7 +201,7 @@ def echo(update, context):
     #msg_admin(context, text,userName)
     for badWord in badWords:
         if badWord in text.lower():
-            deleteMsg(bot, chatId, messageId, userName)
+            delete_msg(bot, chatId, messageId, userName)
             bot.sendMessage(
             chat_id= chatId,
             parse_mode="HTML",
@@ -227,7 +225,7 @@ def del_event(update, context):
     userId = update.effective_user["id"]
     args = context.args
 
-    if userIsAdmin(chatId, userId, bot):
+    if user_is_admin(chatId, userId, bot):
         if len(args) == 0:
             logger.info(f"El usuaro {userName} no ha ingresado argumentos")
             bot.sendMessage(

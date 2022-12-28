@@ -23,12 +23,12 @@ dp=updater.dispatcher
 
 #crear comando para poder interactuar con el bot
 dp.add_handler(CommandHandler("start", functions.start))
-dp.add_handler(CommandHandler("informaciondelcurso", functions.getClasesInfo))
-dp.add_handler(CommandHandler("links", functions.getLinks))
-dp.add_handler(CommandHandler("agregarEvento", functions.addEvent, pass_args=True))
+dp.add_handler(CommandHandler("informaciondelcurso", functions.get_clases_info))
+dp.add_handler(CommandHandler("links", functions.get_links))
+dp.add_handler(CommandHandler("agregarEvento", functions.add_event, pass_args=True))
 dp.add_handler(CommandHandler("eliminarevento", functions.del_event, pass_args=True))
 dp.add_handler(CommandHandler("respuesta", functions.req_teacher, pass_args=True))
-dp.add_handler(CommandHandler("evento", functions.Event))
+dp.add_handler(CommandHandler("evento", functions.event))
 dp.add_handler(CommandHandler("python", functions.Python))
 dp.add_handler(CommandHandler("help", functions.start))
 
